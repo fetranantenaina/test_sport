@@ -1,0 +1,16 @@
+COACH JOHN
+==========
+Dossiers : backend (API + chat temps réel + sert le site) · frontend (Angular) · script.sql (base) · render.yaml (déploiement)
+
+EN LOCAL
+  1) Base : les tables doivent être dans la base 'neondb' de Neon (colle script.sql dans le SQL Editor de Neon, une seule fois).
+     L'adresse de la base est dans backend/.env (DATABASE_URL). Sans DATABASE_URL : PostgreSQL local (variables DB_*).
+  2) Backend :   cd backend  &&  npm install  &&  npm start        -> http://localhost:3000
+  3) Frontend :  cd frontend &&  npm install  &&  npm start        -> https://localhost:4200  (HTTPS ; téléphone : voir l'IP affichée)
+
+EN LIGNE (un seul service : site + API + chat)
+  Voir render.yaml : sur Render, "New > Blueprint", choisis le dépôt GitHub, colle DATABASE_URL.
+  Le backend sert le site compilé (frontend/dist) : npm --prefix frontend run build  avant de lancer node backend/server.js.
+  Ne mets JAMAIS backend/.env sur GitHub (déjà exclu par .gitignore).
+
+Comptes de test : admin/admin · client_x/client · test01/user · test02/user  (à changer avant la mise en ligne)

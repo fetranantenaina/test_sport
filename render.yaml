@@ -1,0 +1,17 @@
+# Déploiement Render (Blueprint) : un seul service Node qui sert le site, l'API et le chat
+services:
+  - type: web
+    name: coach-john
+    runtime: node
+    plan: free
+    buildCommand: npm --prefix frontend install --include=dev && npm --prefix frontend run build && npm --prefix backend install
+    startCommand: node backend/server.js
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
